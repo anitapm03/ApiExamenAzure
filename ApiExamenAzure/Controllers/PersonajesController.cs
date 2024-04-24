@@ -46,20 +46,24 @@ namespace ApiExamenAzure.Controllers
         }
 
         [HttpPost]
-        [Route("[action]/{id}/{nombre}/{imagen}/{serie}")]
+        [Route("[action]")]
         public async Task<ActionResult> InsertPersonaje
-            (int id, string nombre, string imagen, string serie)
+            (Personaje personaje)
         {
-            await this.repo.InsertPersonaje(id, nombre, imagen, serie);
+            await this.repo.InsertPersonaje
+                (personaje.IdPersonaje, personaje.Nombre,
+                personaje.Imagen, personaje.Serie);
             return Ok();
         }
 
         [HttpPut]
-        [Route("[action]/{id}/{nombre}/{imagen}/{serie}")]
+        [Route("[action]")]
         public async Task<ActionResult> UpdatePersonaje
-            (int id, string nombre, string imagen, string serie)
+            (Personaje personaje)
         {
-            await this.repo.UpdatePersonaje(id, nombre, imagen, serie);
+            await this.repo.UpdatePersonaje
+                (personaje.IdPersonaje, personaje.Nombre,
+                personaje.Imagen, personaje.Serie);
             return Ok();
         }
 
